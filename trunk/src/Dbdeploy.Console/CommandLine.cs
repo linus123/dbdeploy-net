@@ -12,11 +12,27 @@ namespace Net.Sf.Dbdeploy
         {
             try
             {
-                IConfiguration config = new ConfigurationFile();
-                DbmsFactory factory = new DbmsFactory(config.DbType, config.DbConnectionString);
-                DatabaseSchemaVersionManager databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, config.DbDeltaSet, config.CurrentDbVersion, config.TableName);
+                var commandLineArgumentsParser = new CommandLineArgumentsParser();
+                ParsedArguments parsedArguments = commandLineArgumentsParser.ParseArgs(args);
 
-                new ToPrintStreamDeployer(databaseSchemaVersion, new DirectoryInfo("."), Console.Out, factory.CreateDbmsSyntax(), config.UseTransaction, null).DoDeploy(Int32.MaxValue);
+                var printScreenFactory = new PrintScreenFactory();
+
+                var config = new ConfigurationFile();
+                var factory = new DbmsFactory(config.DbType, config.DbConnectionString);
+                var databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, config.DbDeltaSet, config.CurrentDbVersion, config.TableName);
+                
+                var directoryInfo = new DirectoryInfo(parsedArguments.GetScriptFilesFolderOrDefaultFolder());
+                TextWriter outputPrintStream = printScreenFactory.GetDoPrintStream(parsedArguments);
+                var dbmsSyntax = factory.CreateDbmsSyntax();
+                var useTransaction = config.UseTransaction;
+                TextWriter undoOutputPrintStream = printScreenFactory.GetUndoPrintStream(parsedArguments);
+
+                var toPrintStreamDeployer = new ToPrintStreamDeployer(databaseSchemaVersion, directoryInfo, outputPrintStream, dbmsSyntax, useTransaction, undoOutputPrintStream);
+
+                toPrintStreamDeployer.DoDeploy(Int32.MaxValue);
+
+                printScreenFactory.ClosePrintStream(outputPrintStream);
+                printScreenFactory.ClosePrintStream(undoOutputPrintStream);
             }
             catch (DbDeployException ex)
             {

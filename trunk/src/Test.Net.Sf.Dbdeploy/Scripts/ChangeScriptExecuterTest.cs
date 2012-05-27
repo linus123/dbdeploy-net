@@ -37,7 +37,8 @@ namespace Net.Sf.Dbdeploy.Scripts
 
     		string deltaFragment = writer.ToString();
 
-			Console.Write(deltaFragment);
+			
+            System.Console.Write(deltaFragment);
 
 			string expectedBegin = syntax.GenerateBeginTransaction();
 			int startOfBegin = deltaFragment.IndexOf(deltaScriptContent) - expectedBegin.Length - Environment.NewLine.Length;
@@ -66,7 +67,7 @@ namespace Net.Sf.Dbdeploy.Scripts
 
 			string deltaFragment = writer.ToString();
 
-			Console.Write(deltaFragment);
+			System.Console.Write(deltaFragment);
 
     		int beingIndex = deltaFragment.IndexOf(syntax.GenerateBeginTransaction());
 			Assert.AreEqual(-1, beingIndex);

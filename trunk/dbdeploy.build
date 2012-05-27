@@ -13,7 +13,7 @@
     <!-- DEFAULT CCNET PROPERTIES, to override: create a copy of local.properties.template, rename it local.properties, and modify the values as needed-->
     <property name="sql.dir" value="${path::get-full-path('db')}" />
     <property name="sql.server" value=".\SQLEXPRESS" />
-    <property name="sql.db" value="DBDEPLOY" />
+    <property name="sql.db" value="DbDeployTest" />
     <property name="sql.username" value="DBDeployUser"/>
     <property name="sql.password" value="Password01"/>
 
@@ -39,8 +39,8 @@
             <replacetokens>
                 <token key="DB_SERVER" value="${sql.server}" />
                 <token key="DB_NAME" value="${sql.db}" />
-                <token key="DB_USER_NAME" value="${sql.username}" />
-                <token key="DB_USER_PWD" value="${sql.password}" />
+                <!-- <token key="DB_USER_NAME" value="${sql.username}" />
+                <token key="DB_USER_PWD" value="${sql.password}" /> -->
             </replacetokens>
         </filterchain>
         </copy>
@@ -99,8 +99,8 @@
                 <replacetokens>
                     <token key="DB_DIR" value="${sql.dir}" />
                     <token key="DB_NAME" value="${sql.db}" />
-                    <token key="DB_USER_NAME" value="${sql.username}" />
-                    <token key="DB_USER_PWD" value="${sql.password}" />
+                    <!-- <token key="DB_USER_NAME" value="${sql.username}" />
+                    <token key="DB_USER_PWD" value="${sql.password}" /> -->
                 </replacetokens>
             </filterchain>
         </copy>

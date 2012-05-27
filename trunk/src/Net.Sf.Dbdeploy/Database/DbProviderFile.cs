@@ -14,6 +14,9 @@ namespace Net.Sf.Dbdeploy.Database
         public DbProviderFile()
         {
             path = GetDefaultPath();
+
+            Console.WriteLine("Using Providers Xml File Path: " + path);
+
         }
 
         public string Path

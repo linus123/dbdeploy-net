@@ -19,13 +19,13 @@ namespace Net.Sf.Dbdeploy.Scripts
             Assert.AreEqual(200808231059, parser.ExtractIdFromFilename("200808231059.timestamped_filename.sql"));
         }
 
-        [Test, ExpectedException(typeof(UnrecognisedFilenameException), "Could not extract a change script number from filename: blah blah blah")]
+        [Test, ExpectedException(typeof(UnrecognisedFilenameException), ExpectedMessage = "Could not extract a change script number from filename: blah blah blah")]
         public void ThrowsWhenFilenameDoesNotStartWithANumber()
         {
             new FilenameParser().ExtractIdFromFilename("blah blah blah");
         }
 
-        [Test, ExpectedException(typeof(UnrecognisedFilenameException), "Could not extract a change script number from filename: foo.2.txt")]
+        [Test, ExpectedException(typeof(UnrecognisedFilenameException), ExpectedMessage = "Could not extract a change script number from filename: foo.2.txt")]
         public void ThrowsWhenFilenameDoesNotStartWithANumberAndContainsANumber()
         {
             new FilenameParser().ExtractIdFromFilename("foo.2.txt");
