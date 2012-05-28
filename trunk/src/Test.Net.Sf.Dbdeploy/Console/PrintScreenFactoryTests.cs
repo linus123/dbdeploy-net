@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using NUnit.Framework;
+using Net.Sf.Dbdeploy.Configuration;
 
 namespace Net.Sf.Dbdeploy.Console
 {
@@ -27,7 +28,7 @@ namespace Net.Sf.Dbdeploy.Console
             var printScreenFactory = new PrintScreenFactory();
 
             var parsedArguments = new ParsedArguments();
-            parsedArguments.DoScriptFile = "c:\\temp\\foo.sql";
+            parsedArguments.SetValue(CommandlineSwitchType.DoFile, "c:\\temp\\foo.sql");
 
             TextWriter results = printScreenFactory.GetDoPrintStream(parsedArguments);
 
@@ -43,7 +44,7 @@ namespace Net.Sf.Dbdeploy.Console
             var printScreenFactory = new PrintScreenFactory();
 
             var parsedArguments = new ParsedArguments();
-            parsedArguments.UndoScriptFile = "c:\\temp\\foo2.sql";
+            parsedArguments.SetValue(CommandlineSwitchType.UndoFile, "c:\\temp\\foo2.sql");
 
             TextWriter results = printScreenFactory.GetUndoPrintStream(parsedArguments);
 

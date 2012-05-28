@@ -1,5 +1,4 @@
 using Net.Sf.Dbdeploy.Configuration;
-using System.Collections.Generic;
 
 namespace Net.Sf.Dbdeploy
 {
@@ -7,26 +6,15 @@ namespace Net.Sf.Dbdeploy
     {
         public ParsedArguments ParseArgs(string[] args)
         {
-            var switches = GetSwitchDictionary(args);
-
-            var parsedArguments = new ParsedArguments();
-
-            if (switches.HasSwitchValue(CommandlineSwitchType.ScriptFiles))
-                parsedArguments.ScriptFilesFolder = switches.GetSwitchValue(CommandlineSwitchType.ScriptFiles);
-
-            if (switches.HasSwitchValue(CommandlineSwitchType.DoFile))
-                parsedArguments.DoScriptFile = switches.GetSwitchValue(CommandlineSwitchType.DoFile);
-
-            if (switches.HasSwitchValue(CommandlineSwitchType.UndoFile))
-                parsedArguments.UndoScriptFile = switches.GetSwitchValue(CommandlineSwitchType.UndoFile);
+            var parsedArguments = GetSwitchDictionary(args);
 
             return parsedArguments;
         }
 
-        private Dictionary<CommandlineSwitchType, string> GetSwitchDictionary(
+        private ParsedArguments GetSwitchDictionary(
             string[] args)
         {
-            var result = new Dictionary<CommandlineSwitchType, string>();
+            var result = new ParsedArguments();
 
             int indexOfSwitch = 0;
 
@@ -42,7 +30,7 @@ namespace Net.Sf.Dbdeploy
 
                 {
                     var switchValue = args[indexOfSwitchValue];
-                    result.Add(switchType, switchValue);
+                    result.SetValue(switchType, switchValue);
                 }
 
                 indexOfSwitch += 2;

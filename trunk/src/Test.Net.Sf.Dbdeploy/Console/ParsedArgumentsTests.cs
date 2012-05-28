@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Net.Sf.Dbdeploy.Configuration;
 
 namespace Net.Sf.Dbdeploy.Console
 {
@@ -9,7 +10,7 @@ namespace Net.Sf.Dbdeploy.Console
         public void GetScriptsFilesFolderShouldReturnScriptFolderWhenScriptFolderPopulated()
         {
             var parsedArguments = new ParsedArguments();
-            parsedArguments.ScriptFilesFolder = "c:\\foo";
+            parsedArguments.SetValue(CommandlineSwitchType.ScriptFiles, "c:\\foo");
 
             var r = parsedArguments.GetScriptFilesFolderOrDefaultFolder();
 
@@ -20,7 +21,6 @@ namespace Net.Sf.Dbdeploy.Console
         public void GetScriptsFilesFolderShouldReturnDefaultWhenScriptFilesFolderIsNotSet()
         {
             var parsedArguments = new ParsedArguments();
-            parsedArguments.ScriptFilesFolder = null;
 
             var r = parsedArguments.GetScriptFilesFolderOrDefaultFolder();
 
@@ -32,9 +32,9 @@ namespace Net.Sf.Dbdeploy.Console
         {
             var parsedArguments = new ParsedArguments();
 
-            parsedArguments.DoScriptFile = "sdf";
+            parsedArguments.SetValue(CommandlineSwitchType.DoFile, "sdf");
 
-            Assert.That(parsedArguments.HasDoScriptFile, Is.True);
+            Assert.That(parsedArguments.HasValue(CommandlineSwitchType.DoFile), Is.True);
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace Net.Sf.Dbdeploy.Console
         {
             var parsedArguments = new ParsedArguments();
 
-            Assert.That(parsedArguments.HasDoScriptFile, Is.False);
+            Assert.That(parsedArguments.HasValue(CommandlineSwitchType.DoFile), Is.False);
         }
 
         [Test]
@@ -50,9 +50,9 @@ namespace Net.Sf.Dbdeploy.Console
         {
             var parsedArguments = new ParsedArguments();
 
-            parsedArguments.UndoScriptFile = "sdf";
+            parsedArguments.SetValue(CommandlineSwitchType.UndoFile, "sdf");
 
-            Assert.That(parsedArguments.HasUndoScriptFile, Is.True);
+            Assert.That(parsedArguments.HasValue(CommandlineSwitchType.UndoFile), Is.True);
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace Net.Sf.Dbdeploy.Console
         {
             var parsedArguments = new ParsedArguments();
 
-            Assert.That(parsedArguments.HasUndoScriptFile, Is.False);
+            Assert.That(parsedArguments.HasValue(CommandlineSwitchType.UndoFile), Is.False);
         }
     }
 }

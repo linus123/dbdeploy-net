@@ -1,23 +1,25 @@
 ﻿using System;
 using System.IO;
+using Net.Sf.Dbdeploy.Configuration;
 
 namespace Net.Sf.Dbdeploy
 {
     public class PrintScreenFactory
     {
         public TextWriter GetDoPrintStream(
-            ParsedArguments parsedArguments)
+            ParsedArguments p)
         {
-            if (parsedArguments.HasDoScriptFile)
-                return new StreamWriter(parsedArguments.DoScriptFile);
+            if (p.HasValue(CommandlineSwitchType.DoFile))
+                return new StreamWriter(p.GetValue(CommandlineSwitchType.DoFile));
 
             return Console.Out;
         }
 
-        public TextWriter GetUndoPrintStream(ParsedArguments parsedArguments)
+        public TextWriter GetUndoPrintStream(
+            ParsedArguments p)
         {
-            if (parsedArguments.HasUndoScriptFile)
-                return new StreamWriter(parsedArguments.UndoScriptFile);
+            if (p.HasValue(CommandlineSwitchType.UndoFile))
+                return new StreamWriter(p.GetValue(CommandlineSwitchType.UndoFile));
 
             return Console.Out;
         }

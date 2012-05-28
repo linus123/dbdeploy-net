@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="CommandLine.cs" />
     <Compile Include="CommandLineArgumentsParser.cs" />
+    <Compile Include="ParsedArguments.cs" />
     <Compile Include="PrintScreenFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwitchDictionaryExtensions.cs" />

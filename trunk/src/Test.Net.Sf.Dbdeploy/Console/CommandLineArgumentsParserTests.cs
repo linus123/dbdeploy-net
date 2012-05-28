@@ -22,7 +22,7 @@ namespace Net.Sf.Dbdeploy.Console
             ParsedArguments result = GetResultsForArgs(
                 args);
 
-            Assert.That(result.ScriptFilesFolder, Is.EqualTo(SourcePath));
+            Assert.That(result.GetValue(CommandlineSwitchType.ScriptFiles), Is.EqualTo(SourcePath));
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace Net.Sf.Dbdeploy.Console
             ParsedArguments result = GetResultsForArgs(
                 args);
             
-            Assert.That(result.DoScriptFile, Is.EqualTo(DoScriptFile));
+            Assert.That(result.GetValue(CommandlineSwitchType.DoFile), Is.EqualTo(DoScriptFile));
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Net.Sf.Dbdeploy.Console
                         , UndoScriptFile
                     });
 
-            Assert.That(result.UndoScriptFile, Is.EqualTo(UndoScriptFile));
+            Assert.That(result.GetValue(CommandlineSwitchType.UndoFile), Is.EqualTo(UndoScriptFile));
         }
 
         private ParsedArguments GetResultsForArgs(
