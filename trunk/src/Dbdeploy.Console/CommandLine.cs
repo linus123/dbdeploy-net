@@ -17,7 +17,7 @@ namespace Net.Sf.Dbdeploy
 
                 var printScreenFactory = new PrintScreenFactory();
 
-                var config = new ConfigurationFile();
+                var config = new CommandLineArgsConfiguration(parsedArguments);
                 var factory = new DbmsFactory(config.DbType, config.DbConnectionString);
                 var databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, config.DbDeltaSet, config.CurrentDbVersion, config.TableName);
                 

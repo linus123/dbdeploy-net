@@ -1,6 +1,4 @@
-using Net.Sf.Dbdeploy.Configuration;
-
-namespace Net.Sf.Dbdeploy
+namespace Net.Sf.Dbdeploy.Configuration
 {
     public class CommandLineArgumentsParser
     {

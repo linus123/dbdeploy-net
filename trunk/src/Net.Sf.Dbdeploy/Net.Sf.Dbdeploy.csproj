@@ -74,9 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeScriptExecuter.cs" />
+    <Compile Include="Configuration\CommandLineArgsConfiguration.cs" />
+    <Compile Include="Configuration\CommandLineArgumentsParser.cs" />
     <Compile Include="Configuration\CommandlineSwitchType.cs" />
     <Compile Include="Configuration\ConfigurationFile.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Configuration\ParsedArguments.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Database\DatabaseSchemaVersionManager.cs" />
     <Compile Include="Database\DbmsSyntax.cs" />
