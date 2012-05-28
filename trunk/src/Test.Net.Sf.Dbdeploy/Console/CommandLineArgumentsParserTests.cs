@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Net.Sf.Dbdeploy.Configuration;
 
 namespace Net.Sf.Dbdeploy.Console
 {
@@ -12,8 +13,14 @@ namespace Net.Sf.Dbdeploy.Console
         [Test]
         public void ParseArgsShouldSetScriptFilesPathWhenGivenArgs()
         {
+            var args = new[]
+                           {
+                               CommandlineSwitchType.ScriptFiles.GetSwitch()
+                               , SourcePath
+                           };
+
             ParsedArguments result = GetResultsForArgs(
-                new[] { SourcePath });
+                args);
 
             Assert.That(result.ScriptFilesFolder, Is.EqualTo(SourcePath));
         }
@@ -21,8 +28,16 @@ namespace Net.Sf.Dbdeploy.Console
         [Test]
         public void ParseArgsShouldDoScriptFileWhenGivenArgs()
         {
+            var args = new[]
+                           {
+                               CommandlineSwitchType.ScriptFiles.GetSwitch()
+                               , SourcePath
+                                , CommandlineSwitchType.DoFile.GetSwitch()
+                                , DoScriptFile
+                           };
+
             ParsedArguments result = GetResultsForArgs(
-                new[] { SourcePath, DoScriptFile });
+                args);
             
             Assert.That(result.DoScriptFile, Is.EqualTo(DoScriptFile));
         }
@@ -31,7 +46,15 @@ namespace Net.Sf.Dbdeploy.Console
         public void ParseArgsShouldUndoScriptFileWhenGivenArgs()
         {
             ParsedArguments result = GetResultsForArgs(
-                new[] { SourcePath, DoScriptFile, UndoScriptFile});
+                new[]
+                    {
+                        CommandlineSwitchType.ScriptFiles.GetSwitch()
+                        , SourcePath
+                        , CommandlineSwitchType.DoFile.GetSwitch()
+                        , DoScriptFile
+                        , CommandlineSwitchType.UndoFile.GetSwitch()
+                        , UndoScriptFile
+                    });
 
             Assert.That(result.UndoScriptFile, Is.EqualTo(UndoScriptFile));
         }

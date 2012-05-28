@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeScriptExecuter.cs" />
+    <Compile Include="Configuration\CommandlineSwitchType.cs" />
     <Compile Include="Configuration\ConfigurationFile.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Controller.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Exceptions\RequiredChangeScriptNotFoundException.cs" />
     <Compile Include="Exceptions\SchemaVersionTrackingException.cs" />
     <Compile Include="Exceptions\UnrecognisedFilenameException.cs" />
+    <Compile Include="Headspring\Enumeration.cs" />
     <Compile Include="NAntTask.cs" />
     <Compile Include="OutputFileEncoding.cs" />
     <Compile Include="PrettyPrinter.cs" />
@@ -120,6 +122,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Headspring\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
