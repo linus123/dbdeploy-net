@@ -18,6 +18,8 @@ namespace Net.Sf.Dbdeploy.Database
     	
 		string GenerateCommitTransaction();
 
+        string GenerateChangeOwner();
+
 		string GenerateVersionCheck(string tableName, string currentVersion, string deltaSet);
     }
 
@@ -41,7 +43,7 @@ namespace Net.Sf.Dbdeploy.Database
 
         public string GenerateChangeOwner()
         {
-            return _changeOwner;
+            return "'" +  _changeOwner + "'";
         }
 
 		public virtual string GenerateVersionCheck(string tableName, string currentVersion, string deltaSet)

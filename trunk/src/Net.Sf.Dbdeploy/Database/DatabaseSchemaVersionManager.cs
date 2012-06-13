@@ -114,7 +114,7 @@ namespace Net.Sf.Dbdeploy.Database
                            " (ChangeNumber, Project, StartDate, AppliedBy, FileName)" +
                            " VALUES (" + changeScript.GetId() + ", '" + _deltaSet + "', " +
                            DbmsSyntax.GenerateTimestamp() +
-                           ", " + DbmsSyntax.GenerateUser() + ", '" + changeScript.GetDescription() + "')" +
+                           ", " + DbmsSyntax.GenerateChangeOwner() + ", '" + changeScript.GetDescription() + "')" +
                            DbmsSyntax.GenerateStatementDelimiter());
             builder.Append(DbmsSyntax.GenerateCommit());
             return builder.ToString();

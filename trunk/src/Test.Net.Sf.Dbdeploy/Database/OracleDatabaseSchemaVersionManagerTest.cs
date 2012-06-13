@@ -146,7 +146,7 @@ COMMIT;
 		{
             ChangeScript script = new ChangeScript(3, "description");
 			Assert.AreEqual(@"--------------- Fragment begins: #3 ---------------
-INSERT INTO changelog (ChangeNumber, Project, StartDate, AppliedBy, FileName) VALUES (3, 'All', CURRENT_TIMESTAMP, USER, 'description');
+INSERT INTO changelog (ChangeNumber, Project, StartDate, AppliedBy, FileName) VALUES (3, 'All', CURRENT_TIMESTAMP, 'none specified', 'description');
 COMMIT;",
 				databaseSchemaVersion.GenerateDoDeltaFragmentHeader(script));
 		}

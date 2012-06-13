@@ -56,7 +56,7 @@ namespace Net.Sf.Dbdeploy.Database
         {
             ChangeScript script = new ChangeScript(3, "description");
             Assert.AreEqual(@"--------------- Fragment begins: #3 ---------------
-INSERT INTO changelog (ChangeNumber, Project, StartDate, AppliedBy, FileName) VALUES (3, 'All', getdate(), user_name(), 'description')
+INSERT INTO changelog (ChangeNumber, Project, StartDate, AppliedBy, FileName) VALUES (3, 'All', getdate(), 'none specified', 'description')
 GO
 ",
                 databaseSchemaVersion.GenerateDoDeltaFragmentHeader(script));
