@@ -1,3 +1,6 @@
 *.mdf
 *.ldf
 *.ReSharper
+*.suo
+*\_ReSharper*
+*\_Upgrade*
