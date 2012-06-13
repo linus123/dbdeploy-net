@@ -1,11 +1,11 @@
-CREATE TABLE changelog (
-  change_number INTEGER NOT NULL,
-  delta_set VARCHAR2(10) NOT NULL,
-  start_dt TIMESTAMP NOT NULL,
-  complete_dt TIMESTAMP NULL,
-  applied_by VARCHAR2(100) NOT NULL,
-  description VARCHAR2(500) NOT NULL
+CREATE TABLE DatabaseVersion (
+  ChangeNumber INTEGER NOT NULL,
+  Project VARCHAR2(10) NOT NULL,
+  StartDate TIMESTAMP NOT NULL,
+  CompletedDate TIMESTAMP NULL,
+  AppliedBy VARCHAR2(100) NOT NULL,
+  FileName VARCHAR2(500) NOT NULL
 );
 
-ALTER TABLE changelog ADD CONSTRAINT Pkchangelog PRIMARY KEY (change_number, delta_set)
+ALTER TABLE changelog ADD CONSTRAINT Pkchangelog PRIMARY KEY (ChangeNumber, Project)
 ;

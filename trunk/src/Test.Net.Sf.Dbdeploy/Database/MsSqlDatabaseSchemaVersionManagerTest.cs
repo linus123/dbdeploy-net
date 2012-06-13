@@ -11,7 +11,7 @@ namespace Net.Sf.Dbdeploy.Database
     public class MsSqlDatabaseSchemaVersionManagerTest : AbstractDatabaseSchemaVersionManagerTest
     {
         private static readonly string CONNECTION_STRING = ConfigurationManager.AppSettings["ConnString"];
-        private const string DELTA_SET = "All";
+        private const string DELETA_SET = "All";
 		private const string CHANGELOG_TABLE_DOES_NOT_EXIST_MESSAGE = "Could not retrieve change log from database because: Invalid object name 'changelog'.";
 		private const string DBMS = "mssql";
 
@@ -22,7 +22,7 @@ namespace Net.Sf.Dbdeploy.Database
 
         protected override string DeltaSet
         {
-            get { return DELTA_SET; }
+            get { return DELETA_SET; }
         }
 
         protected override string ChangelogTableDoesNotExistMessage
@@ -50,22 +50,22 @@ namespace Net.Sf.Dbdeploy.Database
         {
             ExecuteSql(
 				"CREATE TABLE " + databaseSchemaVersion.TableName + "( " +
-                "change_number BIGINT NOT NULL, " +
-                "delta_set VARCHAR(10) NOT NULL, " +
-                "start_dt DATETIME NOT NULL, " +
-                "complete_dt DATETIME NULL, " +
-                "applied_by VARCHAR(100) NOT NULL, " +
-                "description VARCHAR(500) NOT NULL )");
+                "ChangeNumber BIGINT NOT NULL, " +
+                "Project VARCHAR(10) NOT NULL, " +
+                "StartDate DATETIME NOT NULL, " +
+                "CompletedDate DATETIME NULL, " +
+                "AppliedBy VARCHAR(100) NOT NULL, " +
+                "FileName VARCHAR(500) NOT NULL )");
             ExecuteSql(
 				"ALTER TABLE " + databaseSchemaVersion.TableName +
-                " ADD CONSTRAINT Pkchangelog  PRIMARY KEY (change_number, delta_set)");
+                " ADD CONSTRAINT Pkchangelog  PRIMARY KEY (ChangeNumber, Project)");
         }
 
         protected override void InsertRowIntoTable(int i)
         {
 			ExecuteSql("INSERT INTO " + databaseSchemaVersion.TableName
-                       + " (change_number, delta_set, start_dt, complete_dt, applied_by, description) VALUES ( "
-                       + i + ", '" + DELTA_SET
+                       + " (ChangeNumber, Project, StartDate, CompletedDate, AppliedBy, FileName) VALUES ( "
+                       + i + ", '" + DELETA_SET
                        + "', getdate(), getdate(), user_name(), 'Unit test')");
         }
 
@@ -76,8 +76,8 @@ namespace Net.Sf.Dbdeploy.Database
     		EnsureTableDoesNotExist();
     		CreateTable();
 			ExecuteSql("INSERT INTO " + databaseSchemaVersion.TableName
-					   + " (change_number, delta_set, start_dt, complete_dt, applied_by, description) VALUES ( "
-					   + 1 + ", '" + DELTA_SET
+					   + " (ChangeNumber, Project, StartDate, CompletedDate, AppliedBy, FileName) VALUES ( "
+					   + 1 + ", '" + DELETA_SET
 					   + "', getdate(), NULL, user_name(), 'Unit test')");
 
     		databaseSchemaVersion.GetAppliedChangeNumbers();
@@ -100,10 +100,10 @@ namespace Net.Sf.Dbdeploy.Database
 		{
 			databaseSchemaVersion = new DatabaseSchemaVersionManager(new DbmsFactory(DBMS, CONNECTION_STRING), "Main", 5);
 			Assert.AreEqual(@"DECLARE @currentDatabaseVersion INTEGER, @errMsg VARCHAR(1000)
-SELECT @currentDatabaseVersion = MAX(change_number) FROM changelog WHERE delta_set = 'Main'
+SELECT @currentDatabaseVersion = MAX(ChangeNumber) FROM changelog WHERE Project = 'Main'
 IF (@currentDatabaseVersion <> 5)
 BEGIN
-    SET @errMsg = 'Error: current database version on delta_set <Main> is not 5, but ' + CONVERT(VARCHAR, @currentDatabaseVersion)
+    SET @errMsg = 'Error: current database version on Project <Main> is not 5, but ' + CONVERT(VARCHAR, @currentDatabaseVersion)
     RAISERROR (@errMsg, 16, 1)
 END
 

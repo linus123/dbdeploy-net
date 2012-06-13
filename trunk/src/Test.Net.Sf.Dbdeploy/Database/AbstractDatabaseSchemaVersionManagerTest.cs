@@ -56,7 +56,7 @@ namespace Net.Sf.Dbdeploy.Database
         {
             ChangeScript script = new ChangeScript(3, "description");
             Assert.AreEqual(@"--------------- Fragment begins: #3 ---------------
-INSERT INTO changelog (change_number, delta_set, start_dt, applied_by, description) VALUES (3, 'All', getdate(), user_name(), 'description')
+INSERT INTO changelog (ChangeNumber, Project, StartDate, AppliedBy, FileName) VALUES (3, 'All', getdate(), user_name(), 'description')
 GO
 ",
                 databaseSchemaVersion.GenerateDoDeltaFragmentHeader(script));
@@ -68,7 +68,7 @@ GO
             Assert.AreEqual(
                 @"
 GO
-UPDATE changelog SET complete_dt = getdate() WHERE change_number = 3 AND delta_set = 'All'
+UPDATE changelog SET CompletedDate = getdate() WHERE ChangeNumber = 3 AND Project = 'All'
 GO
 
 --------------- Fragment ends: #3 ---------------",
@@ -77,15 +77,15 @@ GO
 
 		public virtual void TestCanRetrieveUndoDeltaFragmentHeaderSql()
 		{
-			ChangeScript script = new ChangeScript(3, "description");
+            ChangeScript script = new ChangeScript(3, "description");
 			Assert.AreEqual(@"--------------- Fragment begins: #3 ---------------", databaseSchemaVersion.GenerateUndoDeltaFragmentHeader(script));
 		}
 
 		public virtual void TestCanRetrieveUndoDeltaFragmentFooterSql()
 		{
-			ChangeScript script = new ChangeScript(3, "description");
+            ChangeScript script = new ChangeScript(3, "description");
 			Assert.AreEqual(
-				@"DELETE FROM changelog WHERE change_number = 3 AND delta_set = 'All'
+				@"DELETE FROM changelog WHERE ChangeNumber = 3 AND Project = 'All'
 GO
 
 --------------- Fragment ends: #3 ---------------",

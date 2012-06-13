@@ -69,8 +69,8 @@ namespace Net.Sf.Dbdeploy.Database
                     connection.Open();
 
 					StringBuilder commandBuilder = new StringBuilder();
-                    commandBuilder.AppendFormat("SELECT change_number, complete_dt FROM {0}", TableName);
-                    commandBuilder.AppendFormat(" WHERE delta_set = '{0}' ORDER BY change_number", deltaSet);
+                    commandBuilder.AppendFormat("SELECT ChangeNumber, CompletedDate FROM {0}", TableName);
+                    commandBuilder.AppendFormat(" WHERE Project = '{0}' ORDER BY ChangeNumber", deltaSet);
 
                     IDbCommand command = connection.CreateCommand();
 					command.CommandText = commandBuilder.ToString();
@@ -108,7 +108,7 @@ namespace Net.Sf.Dbdeploy.Database
             builder.AppendLine("--------------- Fragment begins: " + changeScript + " ---------------");
 
 			builder.AppendLine("INSERT INTO " + TableName +
-                           " (change_number, delta_set, start_dt, applied_by, description)" +
+                           " (ChangeNumber, Project, StartDate, AppliedBy, FileName)" +
                            " VALUES (" + changeScript.GetId() + ", '" + deltaSet + "', " +
                            DbmsSyntax.GenerateTimestamp() +
                            ", " + DbmsSyntax.GenerateUser() + ", '" + changeScript.GetDescription() + "')" +
@@ -122,10 +122,10 @@ namespace Net.Sf.Dbdeploy.Database
             StringBuilder builder = new StringBuilder();
 
             builder.AppendLine(DbmsSyntax.GenerateStatementDelimiter());
-			builder.AppendLine("UPDATE " + TableName + " SET complete_dt = "
+			builder.AppendLine("UPDATE " + TableName + " SET CompletedDate = "
                            + DbmsSyntax.GenerateTimestamp()
-                           + " WHERE change_number = " + changeScript.GetId()
-                           + " AND delta_set = '" + deltaSet + "'"
+                           + " WHERE ChangeNumber = " + changeScript.GetId()
+                           + " AND Project = '" + deltaSet + "'"
                            + DbmsSyntax.GenerateStatementDelimiter());
             builder.AppendLine(DbmsSyntax.GenerateCommit());
             builder.Append("--------------- Fragment ends: " + changeScript + " ---------------");
@@ -142,8 +142,8 @@ namespace Net.Sf.Dbdeploy.Database
             StringBuilder builder = new StringBuilder();
 
 			builder.AppendLine("DELETE FROM " + TableName
-                           + " WHERE change_number = " + changeScript.GetId()
-                           + " AND delta_set = '" + deltaSet + "'"
+                           + " WHERE ChangeNumber = " + changeScript.GetId()
+                           + " AND Project = '" + deltaSet + "'"
                            + DbmsSyntax.GenerateStatementDelimiter());
             builder.AppendLine(DbmsSyntax.GenerateCommit());
             builder.Append("--------------- Fragment ends: " + changeScript + " ---------------");

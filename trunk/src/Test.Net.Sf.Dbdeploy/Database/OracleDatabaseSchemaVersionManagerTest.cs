@@ -43,19 +43,19 @@ namespace Net.Sf.Dbdeploy.Database
 			StringBuilder commandBuilder = new StringBuilder();
 			commandBuilder.Append("BEGIN execute immediate");
 			commandBuilder.Append(" 'CREATE TABLE changelog (");
-			commandBuilder.Append(" change_number INTEGER NOT NULL,");
-			commandBuilder.Append(" delta_set VARCHAR2(10) NOT NULL,");
-			commandBuilder.Append(" start_dt TIMESTAMP NOT NULL,");
-			commandBuilder.Append(" complete_dt TIMESTAMP NULL,");
-			commandBuilder.Append(" applied_by VARCHAR2(100) NOT NULL,");
-			commandBuilder.Append(" description VARCHAR2(500) NOT NULL");
+			commandBuilder.Append(" ChangeNumber INTEGER NOT NULL,");
+			commandBuilder.Append(" Project VARCHAR2(10) NOT NULL,");
+			commandBuilder.Append(" StartDate TIMESTAMP NOT NULL,");
+			commandBuilder.Append(" CompletedDate TIMESTAMP NULL,");
+			commandBuilder.Append(" AppliedBy VARCHAR2(100) NOT NULL,");
+			commandBuilder.Append(" FileName VARCHAR2(500) NOT NULL");
 			commandBuilder.Append(" )';");
 			commandBuilder.Append(" END;");
 			ExecuteSql(commandBuilder.ToString());
 
 			commandBuilder = new StringBuilder();
 			commandBuilder.Append("BEGIN execute immediate");
-			commandBuilder.Append(" 'ALTER TABLE changelog ADD CONSTRAINT Pkchangelog PRIMARY KEY (change_number, delta_set)';");
+			commandBuilder.Append(" 'ALTER TABLE changelog ADD CONSTRAINT Pkchangelog PRIMARY KEY (ChangeNumber, Project)';");
 			commandBuilder.Append(" END;");
 			ExecuteSql(commandBuilder.ToString());
 		}
@@ -64,7 +64,7 @@ namespace Net.Sf.Dbdeploy.Database
 		{
 			StringBuilder commandBuilder = new StringBuilder();
 			commandBuilder.AppendFormat("INSERT INTO {0}", databaseSchemaVersion.TableName);
-			commandBuilder.Append("(change_number, delta_set, start_dt, complete_dt, applied_by, description)");
+			commandBuilder.Append("(ChangeNumber, Project, StartDate, CompletedDate, AppliedBy, FileName)");
 			commandBuilder.AppendFormat(" VALUES ({0}, '{1}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, USER, 'Unit test')", i, DELTA_SET);
 			ExecuteSql(commandBuilder.ToString());
 		}
@@ -92,7 +92,7 @@ namespace Net.Sf.Dbdeploy.Database
 			EnsureTableDoesNotExist();
 			CreateTable();
 			ExecuteSql("INSERT INTO " + databaseSchemaVersion.TableName
-					   + " (change_number, delta_set, start_dt, complete_dt, applied_by, description) VALUES ( "
+					   + " (ChangeNumber, Project, StartDate, CompletedDate, AppliedBy, FileName) VALUES ( "
 					   + 1 + ", '" + DELTA_SET
 					   + "', CURRENT_TIMESTAMP, NULL, USER, 'Unit test')");
 
@@ -114,10 +114,10 @@ namespace Net.Sf.Dbdeploy.Database
 		[Test]
 		public override void TestCanRetrieveDeltaFragmentFooterSql()
 		{
-			ChangeScript script = new ChangeScript(3, "description");
+            ChangeScript script = new ChangeScript(3, "description");
 			Assert.AreEqual(
 				@";
-UPDATE changelog SET complete_dt = CURRENT_TIMESTAMP WHERE change_number = 3 AND delta_set = 'All';
+UPDATE changelog SET CompletedDate = CURRENT_TIMESTAMP WHERE ChangeNumber = 3 AND Project = 'All';
 COMMIT;
 --------------- Fragment ends: #3 ---------------",
 				databaseSchemaVersion.GenerateDoDeltaFragmentFooter(script));
@@ -144,9 +144,9 @@ COMMIT;
 		[Test]
 		public override void TestCanRetrieveDeltaFragmentHeaderSql()
 		{
-			ChangeScript script = new ChangeScript(3, "description");
+            ChangeScript script = new ChangeScript(3, "description");
 			Assert.AreEqual(@"--------------- Fragment begins: #3 ---------------
-INSERT INTO changelog (change_number, delta_set, start_dt, applied_by, description) VALUES (3, 'All', CURRENT_TIMESTAMP, USER, 'description');
+INSERT INTO changelog (ChangeNumber, Project, StartDate, AppliedBy, FileName) VALUES (3, 'All', CURRENT_TIMESTAMP, USER, 'description');
 COMMIT;",
 				databaseSchemaVersion.GenerateDoDeltaFragmentHeader(script));
 		}

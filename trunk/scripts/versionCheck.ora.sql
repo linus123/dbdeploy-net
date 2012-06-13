@@ -5,10 +5,10 @@ currentDatabaseVersion INTEGER;
 errMsg VARCHAR2(1000);
 sqlString VARCHAR2(1000);
 BEGIN
-sqlString := 'SELECT NVL(MAX(change_number),0) FROM ' || tableName || ' WHERE delta_set = ''' || deltaSet || '''';
+sqlString := 'SELECT NVL(MAX(ChangeNumber),0) FROM ' || tableName || ' WHERE Project = ''' || deltaSet || '''';
 execute immediate sqlString INTO currentDatabaseVersion;
 IF currentDatabaseVersion <> databaseVersion THEN
-    errMsg := 'Error: current database version on delta_set <' || deltaSet || '> is not ' || databaseVersion || ', but ' || TO_CHAR(currentDatabaseVersion);
+    errMsg := 'Error: current database version on Project <' || deltaSet || '> is not ' || databaseVersion || ', but ' || TO_CHAR(currentDatabaseVersion);
     RAISE_APPLICATION_ERROR (-20001, errMsg);
 END IF;
 END versionCheck;

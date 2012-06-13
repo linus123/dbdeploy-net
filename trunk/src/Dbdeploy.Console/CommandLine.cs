@@ -8,6 +8,8 @@ namespace Net.Sf.Dbdeploy
 {
     public class CommandLine
     {
+        private const int LastVersionChangeToApply = Int32.MaxValue;
+
         public static void Main(string[] args)
         {
             try
@@ -29,7 +31,7 @@ namespace Net.Sf.Dbdeploy
 
                 var toPrintStreamDeployer = new ToPrintStreamDeployer(databaseSchemaVersion, directoryInfo, outputPrintStream, dbmsSyntax, useTransaction, undoOutputPrintStream);
 
-                toPrintStreamDeployer.DoDeploy(Int32.MaxValue);
+                toPrintStreamDeployer.DoDeploy(LastVersionChangeToApply);
 
                 printScreenFactory.ClosePrintStream(outputPrintStream);
                 printScreenFactory.ClosePrintStream(undoOutputPrintStream);
