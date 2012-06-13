@@ -5,6 +5,10 @@ namespace Net.Sf.Dbdeploy.Database
 {
     public class OracleDbmsSyntax : DbmsSyntax
     {
+        public OracleDbmsSyntax(string owner) : base(owner)
+        {
+        }
+
         public override string GenerateScriptHeader()
         {
 			StringBuilder builder = new StringBuilder();

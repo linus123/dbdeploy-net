@@ -14,6 +14,7 @@ namespace Net.Sf.Dbdeploy.Configuration
         public static CommandlineSwitchType UseTransaction = new CommandlineSwitchType(7, "Use Transaction", "usetransaction");
         public static CommandlineSwitchType CurrrentDatabaseVersion = new CommandlineSwitchType(8, "Current Database Version", "dbversion");
         public static CommandlineSwitchType TableName = new CommandlineSwitchType(9, "Table Name", "tablename");
+        public static CommandlineSwitchType Owner = new CommandlineSwitchType(10, "Change Ownder", "owner");
 
         private readonly string _commandLineSwitch;
 

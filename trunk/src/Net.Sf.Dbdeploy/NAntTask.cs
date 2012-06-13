@@ -22,6 +22,7 @@ namespace Net.Sf.Dbdeploy
         private String deltaSet = "Main";
         private Int64 currentDbVersion = Int64.MinValue;
     	private string changeLogTable = DatabaseSchemaVersionManager.DEFAULT_TABLE_NAME;
+        private string changeOwner = DatabaseSchemaVersionManager.DEFAULT_CHANGE_OWNER;
     	private bool useTransaction = false;
         private string outputFileEncoding = string.Empty;
 
@@ -119,9 +120,9 @@ namespace Net.Sf.Dbdeploy
                         undoOutputPrintStream = new StreamWriter(undoOutputfile.FullName, true, encoding);
 
                     DbmsFactory factory = new DbmsFactory(dbType, dbConnection);
-                    IDbmsSyntax dbmsSyntax = factory.CreateDbmsSyntax();
-                    DatabaseSchemaVersionManager databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, deltaSet, GetCurrentDbVersion(), changeLogTable);
+                    DatabaseSchemaVersionManager databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, deltaSet, GetCurrentDbVersion(), changeLogTable, changeOwner);
 
+                    IDbmsSyntax dbmsSyntax = factory.CreateDbmsSyntax(changeOwner);
                     ToPrintStreamDeployer toPrintSteamDeployer = new ToPrintStreamDeployer(databaseSchemaVersion, dir, outputPrintStream, dbmsSyntax, useTransaction, undoOutputPrintStream);
                     toPrintSteamDeployer.DoDeploy(lastChangeToApply);
 

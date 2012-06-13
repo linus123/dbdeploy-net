@@ -84,7 +84,7 @@ namespace MSBuild.Dbdeploy.Task
 						undoOutputPrintStream = new StreamWriter(undoOutputfile.FullName);
 					}
 					DbmsFactory factory = new DbmsFactory(dbType, dbConnection);
-					IDbmsSyntax dbmsSyntax = factory.CreateDbmsSyntax();
+                    IDbmsSyntax dbmsSyntax = factory.CreateDbmsSyntax(DatabaseSchemaVersionManager.DEFAULT_CHANGE_OWNER);
 					DatabaseSchemaVersionManager databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, deltaSet, null);
 
 					ToPrintStreamDeployer toPrintSteamDeployer = new ToPrintStreamDeployer(databaseSchemaVersion, dir, outputPrintStream, dbmsSyntax, useTransaction, undoOutputPrintStream);

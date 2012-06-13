@@ -1,6 +1,6 @@
 CREATE TABLE DatabaseVersion (
   ChangeNumber INTEGER NOT NULL,
-  Project VARCHAR2(10) NOT NULL,
+  Project VARCHAR2(255) NOT NULL,
   StartDate TIMESTAMP NOT NULL,
   CompletedDate TIMESTAMP NULL,
   AppliedBy VARCHAR2(100) NOT NULL,

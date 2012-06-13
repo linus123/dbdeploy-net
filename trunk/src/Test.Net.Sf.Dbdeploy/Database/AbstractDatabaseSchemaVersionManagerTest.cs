@@ -95,7 +95,8 @@ GO
 		public virtual void TestCanSetChangeLogTableName()
 		{
 			const string expectedTableName = "FooTable";
-			DatabaseSchemaVersionManager databaseSchemaVersionManager = new DatabaseSchemaVersionManager(new DbmsFactory(Dbms, ConnectionString), DeltaSet, null, expectedTableName);
+            const string expectedChangeOwner = "FooOwner";
+            DatabaseSchemaVersionManager databaseSchemaVersionManager = new DatabaseSchemaVersionManager(new DbmsFactory(Dbms, ConnectionString), DeltaSet, null, expectedTableName, expectedChangeOwner);
 			Assert.AreEqual(expectedTableName, databaseSchemaVersionManager.TableName);
 		}
 

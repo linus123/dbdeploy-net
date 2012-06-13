@@ -21,11 +21,11 @@ namespace Net.Sf.Dbdeploy
 
                 var config = new CommandLineArgsConfiguration(parsedArguments);
                 var factory = new DbmsFactory(config.DbType, config.DbConnectionString);
-                var databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, config.DbDeltaSet, config.CurrentDbVersion, config.TableName);
+                var databaseSchemaVersion = new DatabaseSchemaVersionManager(factory, config.DbDeltaSet, config.CurrentDbVersion, config.TableName, config.ChangeOwner);
                 
                 var directoryInfo = new DirectoryInfo(parsedArguments.GetScriptFilesFolderOrDefaultFolder());
                 TextWriter outputPrintStream = printScreenFactory.GetDoPrintStream(parsedArguments);
-                var dbmsSyntax = factory.CreateDbmsSyntax();
+                var dbmsSyntax = factory.CreateDbmsSyntax(config.ChangeOwner);
                 var useTransaction = config.UseTransaction;
                 TextWriter undoOutputPrintStream = printScreenFactory.GetUndoPrintStream(parsedArguments);
 

@@ -2,6 +2,10 @@ namespace Net.Sf.Dbdeploy.Database
 {
     public class HsqlDbmsSyntax : DbmsSyntax
     {
+        public HsqlDbmsSyntax(string owner) : base(owner)
+        {
+        }
+
         public override string GenerateScriptHeader()
         {
             return string.Empty;

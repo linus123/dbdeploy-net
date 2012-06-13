@@ -1,4 +1,6 @@
-﻿namespace Net.Sf.Dbdeploy.Configuration
+﻿using Net.Sf.Dbdeploy.Database;
+
+namespace Net.Sf.Dbdeploy.Configuration
 {
     public class CommandLineArgsConfiguration : IConfiguration
     {
@@ -23,6 +25,19 @@
         public string DbDeltaSet
         {
             get { return GetArgValue(CommandlineSwitchType.DeltaSet); }
+        }
+
+        public string ChangeOwner
+        {
+            get
+            {
+                var changeOwner = GetArgValue(CommandlineSwitchType.Owner);
+
+                if (string.IsNullOrEmpty(changeOwner))
+                    return DatabaseSchemaVersionManager.DEFAULT_CHANGE_OWNER;
+
+                return changeOwner;
+            }
         }
 
         public bool UseTransaction

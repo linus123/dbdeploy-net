@@ -11,48 +11,51 @@ namespace Net.Sf.Dbdeploy.Database
     public class DatabaseSchemaVersionManager
     {
         public static readonly string DEFAULT_TABLE_NAME = "changelog";
+        public static readonly string DEFAULT_CHANGE_OWNER = "none specified";
 
-        private readonly DbmsFactory factory;
-        private readonly string deltaSet;
-        private readonly Int64? currentVersion;
-    	private readonly string tableName;
+        private readonly DbmsFactory _factory;
+        private readonly string _deltaSet;
+        private readonly Int64? _currentVersion;
+    	private readonly string _tableName;
+        private string _changeOwner;
 
         public DatabaseSchemaVersionManager(DbmsFactory factory, string deltaSet, int? currentVersion)
-			: this(factory, deltaSet, currentVersion, DEFAULT_TABLE_NAME)
+            : this(factory, deltaSet, currentVersion, DEFAULT_TABLE_NAME, DEFAULT_CHANGE_OWNER)
         {        	
         }
 
-        public DatabaseSchemaVersionManager(DbmsFactory factory, string deltaSet, Int64? currentVersion, string tableName)
+        public DatabaseSchemaVersionManager(DbmsFactory factory, string deltaSet, Int64? currentVersion, string tableName, string changeOwner)
         {
-            this.factory = factory;
-            this.deltaSet = deltaSet;
-            this.currentVersion = currentVersion;
-        	this.tableName = tableName;
+            _factory = factory;
+            _deltaSet = deltaSet;
+            _currentVersion = currentVersion;
+        	_tableName = tableName;
+            _changeOwner = changeOwner;
         }
 
         private IDbmsSyntax DbmsSyntax
         {
-            get { return factory.CreateDbmsSyntax(); }
+            get { return _factory.CreateDbmsSyntax(_changeOwner); }
         }
 
         private IDbConnection Connection
         {
-            get { return factory.CreateConnection(); }
+            get { return _factory.CreateConnection(); }
         }
     	public string TableName
     	{
-    		get { return tableName; }
+    		get { return _tableName; }
     	}
 
     	public List<Int64> GetAppliedChangeNumbers()
         {
-            if (currentVersion == null)
+            if (_currentVersion == null)
             {
                 return GetCurrentVersionFromDb();
             }
     		
 			List<Int64> changeNumbers = new List<Int64>();
-    		for (Int64 i = 1; i <= currentVersion.Value; i++)
+    		for (Int64 i = 1; i <= _currentVersion.Value; i++)
     		{
     			changeNumbers.Add(i);
     		}
@@ -70,7 +73,7 @@ namespace Net.Sf.Dbdeploy.Database
 
 					StringBuilder commandBuilder = new StringBuilder();
                     commandBuilder.AppendFormat("SELECT ChangeNumber, CompletedDate FROM {0}", TableName);
-                    commandBuilder.AppendFormat(" WHERE Project = '{0}' ORDER BY ChangeNumber", deltaSet);
+                    commandBuilder.AppendFormat(" WHERE Project = '{0}' ORDER BY ChangeNumber", _deltaSet);
 
                     IDbCommand command = connection.CreateCommand();
 					command.CommandText = commandBuilder.ToString();
@@ -109,7 +112,7 @@ namespace Net.Sf.Dbdeploy.Database
 
 			builder.AppendLine("INSERT INTO " + TableName +
                            " (ChangeNumber, Project, StartDate, AppliedBy, FileName)" +
-                           " VALUES (" + changeScript.GetId() + ", '" + deltaSet + "', " +
+                           " VALUES (" + changeScript.GetId() + ", '" + _deltaSet + "', " +
                            DbmsSyntax.GenerateTimestamp() +
                            ", " + DbmsSyntax.GenerateUser() + ", '" + changeScript.GetDescription() + "')" +
                            DbmsSyntax.GenerateStatementDelimiter());
@@ -125,7 +128,7 @@ namespace Net.Sf.Dbdeploy.Database
 			builder.AppendLine("UPDATE " + TableName + " SET CompletedDate = "
                            + DbmsSyntax.GenerateTimestamp()
                            + " WHERE ChangeNumber = " + changeScript.GetId()
-                           + " AND Project = '" + deltaSet + "'"
+                           + " AND Project = '" + _deltaSet + "'"
                            + DbmsSyntax.GenerateStatementDelimiter());
             builder.AppendLine(DbmsSyntax.GenerateCommit());
             builder.Append("--------------- Fragment ends: " + changeScript + " ---------------");
@@ -143,7 +146,7 @@ namespace Net.Sf.Dbdeploy.Database
 
 			builder.AppendLine("DELETE FROM " + TableName
                            + " WHERE ChangeNumber = " + changeScript.GetId()
-                           + " AND Project = '" + deltaSet + "'"
+                           + " AND Project = '" + _deltaSet + "'"
                            + DbmsSyntax.GenerateStatementDelimiter());
             builder.AppendLine(DbmsSyntax.GenerateCommit());
             builder.Append("--------------- Fragment ends: " + changeScript + " ---------------");
@@ -153,8 +156,8 @@ namespace Net.Sf.Dbdeploy.Database
         public string GenerateVersionCheck()
         {
             string versionCheckSql = string.Empty;
-            if (currentVersion.HasValue)
-				versionCheckSql = DbmsSyntax.GenerateVersionCheck(TableName, currentVersion.Value.ToString(), deltaSet);
+            if (_currentVersion.HasValue)
+				versionCheckSql = DbmsSyntax.GenerateVersionCheck(TableName, _currentVersion.Value.ToString(), _deltaSet);
 
 			return versionCheckSql;
         }

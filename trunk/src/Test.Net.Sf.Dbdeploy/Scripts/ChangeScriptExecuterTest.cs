@@ -31,7 +31,7 @@ namespace Net.Sf.Dbdeploy.Scripts
 				stream.Write(deltaScriptContent);
 
     		StringWriter writer = new StringWriter();
-    		MsSqlDbmsSyntax syntax = new MsSqlDbmsSyntax();
+    		MsSqlDbmsSyntax syntax = new MsSqlDbmsSyntax("changeOwner");
     		ChangeScriptExecuter executer = new ChangeScriptExecuter(writer, syntax, true);
 			executer.ApplyChangeDoScript(script);
 
@@ -61,7 +61,7 @@ namespace Net.Sf.Dbdeploy.Scripts
 				stream.Write(deltaScriptContent);
 
 			StringWriter writer = new StringWriter();
-			MsSqlDbmsSyntax syntax = new MsSqlDbmsSyntax();
+            MsSqlDbmsSyntax syntax = new MsSqlDbmsSyntax("changeOwner");
 			ChangeScriptExecuter executer = new ChangeScriptExecuter(writer, syntax, false);
 			executer.ApplyChangeDoScript(script);
 
@@ -100,7 +100,7 @@ END");
             }
 
             StringWriter writer = new StringWriter();
-            ChangeScriptExecuter executer = new ChangeScriptExecuter(writer, new MsSqlDbmsSyntax(), false);
+            ChangeScriptExecuter executer = new ChangeScriptExecuter(writer, new MsSqlDbmsSyntax("changeOwner"), false);
             executer.ApplyChangeUndoScript(script);
             Assert.IsFalse(writer.ToString().Contains("CREATE TABLE"), "output should not contain the original script!");
         }

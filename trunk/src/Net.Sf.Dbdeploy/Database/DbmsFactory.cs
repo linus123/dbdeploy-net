@@ -17,16 +17,17 @@ namespace Net.Sf.Dbdeploy.Database
             providers = new DbProviderFile().LoadProviders();
         }
 
-        public IDbmsSyntax CreateDbmsSyntax()
+        public IDbmsSyntax CreateDbmsSyntax(
+            string changeOwner)
         {
             switch (dbms)
             {
                 case "ora":
-                    return new OracleDbmsSyntax();
+                    return new OracleDbmsSyntax(changeOwner);
                 case "mssql":
-                    return new MsSqlDbmsSyntax();
+                    return new MsSqlDbmsSyntax(changeOwner);
                 case "mysql":
-                    return new MySqlDbmsSyntax();
+                    return new MySqlDbmsSyntax(changeOwner);
                 default:
                     throw new ArgumentException("Supported dbms: ora, mssql, mysql");
             }

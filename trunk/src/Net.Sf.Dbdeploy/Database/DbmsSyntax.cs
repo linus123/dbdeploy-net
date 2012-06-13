@@ -23,13 +23,26 @@ namespace Net.Sf.Dbdeploy.Database
 
 	public abstract class DbmsSyntax : IDbmsSyntax
 	{
-		public abstract string GenerateScriptHeader();
+	    private string _changeOwner;
+
+	    protected DbmsSyntax(
+            string owner)
+	    {
+	        _changeOwner = owner;
+	    }
+
+	    public abstract string GenerateScriptHeader();
 		public abstract string GenerateTimestamp();
 		public abstract string GenerateUser();
 		public abstract string GenerateStatementDelimiter();
 		public abstract string GenerateCommit();
 		public abstract string GenerateBeginTransaction();
 		public abstract string GenerateCommitTransaction();
+
+        public string GenerateChangeOwner()
+        {
+            return _changeOwner;
+        }
 
 		public virtual string GenerateVersionCheck(string tableName, string currentVersion, string deltaSet)
 		{

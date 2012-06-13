@@ -4,6 +4,10 @@ namespace Net.Sf.Dbdeploy.Database
 {
     public class MySqlDbmsSyntax : DbmsSyntax
     {
+        public MySqlDbmsSyntax(string owner) : base(owner)
+        {
+        }
+
         public override string GenerateScriptHeader()
         {
             return String.Empty;

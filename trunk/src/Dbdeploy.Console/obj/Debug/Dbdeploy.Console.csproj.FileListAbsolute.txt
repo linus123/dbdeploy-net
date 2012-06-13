@@ -1,0 +1,9 @@
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\bin\Debug\dbdeploy.exe.config
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\bin\Debug\dbdeploy.exe
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\bin\Debug\dbdeploy.pdb
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\bin\Debug\Net.Sf.Dbdeploy.dll
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\bin\Debug\NAnt.Core.dll
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\bin\Debug\Net.Sf.Dbdeploy.pdb
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\obj\Debug\ResolveAssemblyReference.cache
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\obj\Debug\dbdeploy.exe
+C:\working\dbdeploy-net\trunk\src\Dbdeploy.Console\obj\Debug\dbdeploy.pdb

@@ -1,0 +1,8 @@
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\bin\Debug\MSBuild.Dbdeploy.Task.dll
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\bin\Debug\MSBuild.Dbdeploy.Task.pdb
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\bin\Debug\Net.Sf.Dbdeploy.dll
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\bin\Debug\NAnt.Core.dll
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\bin\Debug\Net.Sf.Dbdeploy.pdb
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\obj\Debug\ResolveAssemblyReference.cache
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\obj\Debug\MSBuild.Dbdeploy.Task.dll
+C:\working\dbdeploy-net\trunk\src\MSBuild.Dbdeploy.Task\obj\Debug\MSBuild.Dbdeploy.Task.pdb

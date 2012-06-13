@@ -1,0 +1,58 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Scripts/f:FilenameParserTest.cs" caret="1583" fromTop="30" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Database/f:DbProviderFileTest.cs" caret="144" fromTop="7" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Database/f:DbProviderFile.cs" caret="632" fromTop="27" />
+    <File id="210BF4ED-AD49-4C1F-9521-C912B410608C/f:dbdeploy.build/s:..?dbdeploy.build" caret="1282" fromTop="25" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Database/f:AbstractDatabaseSchemaVersionManagerTest.cs" caret="471" fromTop="17" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Scripts/f:ChangeScriptExecuterTest.cs" caret="3744" fromTop="26" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Database/f:DatabaseSchemaVersionManager.cs" caret="1212" fromTop="37" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Database/f:OracleDatabaseSchemaVersionManagerTest.cs" caret="1339" fromTop="26" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/f:Controller.cs" caret="2885" fromTop="30" />
+    <File id="BD12111C-BB14-4BB4-AE33-EEE50DB6B659/f:MSBuildTask.cs" caret="600" fromTop="0" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Database/f:MsSqlDatabaseSchemaVersionManagerTest.cs" caret="2085" fromTop="23" />
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:App.config" caret="0" fromTop="0" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Headspring/f:Enumeration.cs" caret="554" fromTop="17" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:CommandLineArgumentsParserTests.cs" caret="22" fromTop="0" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="2177" fromTop="48" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:PrintScreenFactoryTests.cs" caret="1582" fromTop="42" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:ParsedArguments.cs" caret="1133" fromTop="41" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:ConfigurationFile.cs" caret="141" fromTop="5" />
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:PrintScreenFactory.cs" caret="696" fromTop="23" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="238" fromTop="7" />
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:CommandLine.cs" caret="354" fromTop="14" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgumentsParser.cs" caret="620" fromTop="21" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandlineSwitchType.cs" caret="1501" fromTop="23" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Database/f:MsSqlDbmsSyntax.cs" caret="141" fromTop="6" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/f:ChangeScriptExecuter.cs" caret="369" fromTop="14" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/f:ToPrintStreamDeployer.cs" caret="2310" fromTop="30" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:PrintScreenFactory.cs" caret="221" fromTop="9" />
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:PrintScreenFactory.cs" caret="502" fromTop="18" />
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:PrintScreenFactory.cs" caret="658" fromTop="21" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:CommandLineArgumentsParserTests.cs" caret="838" fromTop="24" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:CommandLineArgumentsParserTests.cs" caret="1474" fromTop="41" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:CommandLineArgumentsParserTests.cs" caret="2140" fromTop="7" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="418" fromTop="12" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="754" fromTop="23" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="1253" fromTop="36" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="1538" fromTop="30" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="1886" fromTop="40" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:ParsedArgumentsTests.cs" caret="2177" fromTop="48" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:PrintScreenFactoryTests.cs" caret="1002" fromTop="26" />
+    <File id="2A667F5F-43DC-4158-B5F0-64E6D7F1F9DA/d:Console/f:PrintScreenFactoryTests.cs" caret="1582" fromTop="42" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:ConfigurationFile.cs" caret="191" fromTop="5" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:ParsedArguments.cs" caret="1133" fromTop="41" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="485" fromTop="20" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="407" fromTop="14" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="601" fromTop="19" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="732" fromTop="24" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="1543" fromTop="39" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="1400" fromTop="38" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="1051" fromTop="33" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgsConfiguration.cs" caret="171" fromTop="3" />
+    <File id="A7A5B171-0A90-4652-A6F1-D4E1A480ACBE/d:Configuration/f:CommandLineArgumentsParser.cs" caret="1471" fromTop="51" />
+    <File id="E1E0EC53-D4C1-4C8D-BAAB-A9AD18EE8E2B/f:CommandLine.cs" caret="579" fromTop="19" />
+  </RecentEdits>
+</RecentFiles>
